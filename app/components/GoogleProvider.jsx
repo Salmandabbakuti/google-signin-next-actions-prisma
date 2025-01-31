@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 export default function GoogleProvider({ children }) {
-  const [isMounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
+
   return (
     <GoogleOAuthProvider
       clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
@@ -14,7 +15,7 @@ export default function GoogleProvider({ children }) {
       }
       onScriptLoadSuccess={() => console.log("Google OAuth script loaded")}
     >
-      {isMounted && children}
+      {mounted && children}
     </GoogleOAuthProvider>
   );
 }

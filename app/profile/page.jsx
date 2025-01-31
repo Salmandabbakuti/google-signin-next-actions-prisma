@@ -16,7 +16,6 @@ const ProfileForm = () => {
     setDataLoading(true);
     try {
       const data = await getMyProfile();
-      // console.log("Profile data:", data);
       form.setFieldsValue(data);
     } catch (error) {
       message.error("Failed to fetch profile data. Please try again.");
@@ -27,7 +26,6 @@ const ProfileForm = () => {
   };
 
   const onFinish = (values) => {
-    // console.log("Form values:", values);
     const { name, bio, picture, country, phone } = values;
     setLoading(true);
     updateMyProfile({ name, bio, picture, country, phone })
